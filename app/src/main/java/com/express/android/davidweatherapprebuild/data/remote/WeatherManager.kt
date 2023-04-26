@@ -9,6 +9,6 @@ class WeatherManager {
         weatherService = retrofit.create(WeatherService::class.java)
     }
 
-    suspend fun getWeather(cityName: String, APIKEY: String) =
-        weatherService.getWeather(cityName, APIKEY)
+    suspend fun getWeather(cityName: String) =
+        weatherService.getWeather(cityName)
 }

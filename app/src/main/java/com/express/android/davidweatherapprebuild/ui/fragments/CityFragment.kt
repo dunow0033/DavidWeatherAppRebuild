@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.express.android.davidweatherapprebuild.R
+import com.express.android.davidweatherapprebuild.data.models.HourlyWeather
 import com.express.android.davidweatherapprebuild.data.remote.WeatherManager
 import com.express.android.davidweatherapprebuild.databinding.FragmentCityBinding
 import com.express.android.davidweatherapprebuild.repository.WeatherRepository
@@ -43,8 +45,9 @@ class CityFragment : Fragment() {
 
         binding.nextButton.setOnClickListener {
             val cityName = binding.etCity.text.toString()
-            weatherViewModel.getWeather(cityName, API_KEY)
-            findNavController().navigate(R.id.weatherFragment)
+            val bundle = bundleOf("cityName" to cityName)
+            //weatherViewModel.getWeather(cityName)
+            findNavController().navigate(R.id.cityFragment_to_WeatherFragment, bundle)
         }
     }
 

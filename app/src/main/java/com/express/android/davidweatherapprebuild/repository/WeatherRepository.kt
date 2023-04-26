@@ -8,10 +8,10 @@ import java.lang.Exception
 
 class WeatherRepository(private val weatherManager: WeatherManager) {
 
-    fun getWeather(cityName: String, APIKEY: String) = flow {
+    fun getWeather(cityName: String) = flow {
 
         val resource = try {
-            val response = weatherManager.getWeather(cityName, APIKEY)
+            val response = weatherManager.getWeather(cityName)
             if(response.isSuccessful && response.body() != null) {
                 Resource.Success(response.body()!!)
             } else {

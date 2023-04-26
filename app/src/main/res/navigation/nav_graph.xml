@@ -10,9 +10,29 @@
         android:name="com.express.android.davidweatherapprebuild.ui.fragments.CityFragment"
         android:label="City"
         tools:layout="@layout/fragment_city">
+        <action
+            android:id="@+id/cityFragment_to_WeatherFragment"
+            app:destination="@id/weatherFragment" />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
+        android:name="com.express.android.davidweatherapprebuild.ui.fragments.WeatherFragment"
+        android:label="Weather"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/hourlyWeatherFragment_to_weatherInfoFragment"
+            app:destination="@id/weatherFragmentItems" />
+<!--        <argument-->
+<!--            android:name="myWeather"-->
+<!--            app:argType="com.example.lowesweatherapp.model.HourlyWeather[]"-->
+<!--            app:nullable="false" />-->
+        <argument
+            android:name="city"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragmentItems"
         android:name="com.express.android.davidweatherapprebuild.ui.fragments.WeatherFragment"
         android:label="Weather"
         tools:layout="@layout/fragment_weather">

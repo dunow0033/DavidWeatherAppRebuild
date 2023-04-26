@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/other/Weather/DavidWeatherApp/DavidWeatherAppRebuild/app/src/main/res/layout/fragment_city.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/other/Weather/DavidWeatherApp/DavidWeatherAppRebuild/app/src/main/res/layout/fragment_weather.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/other/Weather/DavidWeatherApp/DavidWeatherAppRebuild/app/src/main/res/layout/fragment_weather_info.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/other/Weather/DavidWeatherApp/DavidWeatherAppRebuild/app/src/main/res/layout/item_weather.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/bedon/AndroidStudioProjects/DavidWeatherAppRebuild/app/src/main/res/layout/activity_main.xml" value="0.2105978260869565" />
         <entry key="..\:/Users/bedon/AndroidStudioProjects/DavidWeatherAppRebuild/app/src/main/res/layout/fragment_city.xml" value="0.2105978260869565" />
         <entry key="..\:/Users/bedon/AndroidStudioProjects/DavidWeatherAppRebuild/app/src/main/res/layout/fragment_weather.xml" value="0.11302083333333333" />
