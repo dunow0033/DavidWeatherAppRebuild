@@ -27,9 +27,8 @@
 <!--            app:argType="com.example.lowesweatherapp.model.HourlyWeather[]"-->
 <!--            app:nullable="false" />-->
         <argument
-            android:name="city"
-            app:argType="string"
-            app:nullable="false" />
+            android:name="cityName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/weatherFragmentItems"

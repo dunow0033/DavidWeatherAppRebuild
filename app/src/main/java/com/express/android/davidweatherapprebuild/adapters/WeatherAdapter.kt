@@ -42,8 +42,8 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.binding.apply {
             val day = differ.currentList[position]
-            tvDays.text = day.weather[position].main.toString()
-            tvDayTemp.text = day.main.temp.toString()
+            tvWeatherMain.text = day.weather[position].main.toString()
+            tvTemp.text = day.main.temp.toString()
         }
     }
 }

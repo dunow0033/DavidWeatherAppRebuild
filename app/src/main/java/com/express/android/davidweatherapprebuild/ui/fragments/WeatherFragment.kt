@@ -22,7 +22,7 @@ class WeatherFragment : Fragment() {
     private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var cityName: String
+    private lateinit var cityName: String
 
     private val args by navArgs<WeatherFragmentArgs>()
 
@@ -37,7 +37,10 @@ class WeatherFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentWeatherBinding.inflate(inflater, container, false)
 
-        cityName = args.city
+        //val recyclerView = binding.rvWeather
+
+//        recyclerView.adapter = weatherAdapter
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         return binding.root
     }
@@ -47,6 +50,8 @@ class WeatherFragment : Fragment() {
 
         setupRecyclerView()
 
+        cityName = args.cityName
+
         weatherViewModel = ViewModelProvider(
             this,
             WeatherViewModelFactory(WeatherRepository(WeatherManager()))
@@ -54,29 +59,35 @@ class WeatherFragment : Fragment() {
 
         weatherViewModel.getWeather(cityName)
 
-        weatherViewModel.response.observe(viewLifecycleOwner) { weather ->
+        weatherViewModel.response.observe(viewLifecycleOwner, Observer {
+            weatherAdapter.differ.submitList(it.data?.list)
 
-            binding.apply {
-                tvCityName.text = cityName
-                tvDescription.text = weather.description
-                tvTemperature.text = weather.temperature
-                tvWind.text = weather.wind
-
-                val forecast = weather.forecast
-                tvForecast1.text = "${forecast[0].temperature}/ ${forecast[0].wind}"
-                tvForecast2.text = "${forecast[1].temperature}/ ${forecast[1].wind}"
-                tvForecast3.text = "${forecast[2].temperature}/ ${forecast[2].wind}"
-            }
-        }
+//            binding.apply {
+//                tvCityName.text = cityName
+//                tvDescription.text = weather.description
+//                tvTemperature.text = weather.temperature
+//                tvWind.text = weather.wind
+//
+//                val forecast = weather.forecast
+//                tvForecast1.text = "${forecast[0].temperature}/ ${forecast[0].wind}"
+//                tvForecast2.text = "${forecast[1].temperature}/ ${forecast[1].wind}"
+//                tvForecast3.text = "${forecast[2].temperature}/ ${forecast[2].wind}"
+//            }
+        })
 
 //        weatherViewModel.weatherData.observe(viewLifecycleOwner, Observer {
 //            weatherAdapter.differ.submitList(it.data?.list)
 //        })
     }
 
-    private fun setupRecyclerView() = binding.rvWeatherDays.apply {
+    private fun setupRecyclerView() = binding.rvWeather.apply {
         weatherAdapter = WeatherAdapter()
         adapter = weatherAdapter
         layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
