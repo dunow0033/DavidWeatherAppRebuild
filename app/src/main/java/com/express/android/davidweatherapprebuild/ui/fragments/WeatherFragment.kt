@@ -1,21 +1,24 @@
 package com.express.android.davidweatherapprebuild.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.express.android.davidweatherapprebuild.R
 import com.express.android.davidweatherapprebuild.adapters.WeatherAdapter
+import com.express.android.davidweatherapprebuild.data.models.HourlyWeather
 import com.express.android.davidweatherapprebuild.data.remote.WeatherManager
 import com.express.android.davidweatherapprebuild.databinding.FragmentWeatherBinding
 import com.express.android.davidweatherapprebuild.repository.WeatherRepository
 import com.express.android.davidweatherapprebuild.viewModels.WeatherViewModel
 import com.express.android.davidweatherapprebuild.viewModels.WeatherViewModelFactory
+
 
 class WeatherFragment : Fragment() {
 
@@ -23,6 +26,7 @@ class WeatherFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var cityName: String
+    private lateinit var weatherList: Array<HourlyWeather>
 
     private val args by navArgs<WeatherFragmentArgs>()
 
@@ -37,20 +41,20 @@ class WeatherFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentWeatherBinding.inflate(inflater, container, false)
 
-        //val recyclerView = binding.rvWeather
-
-//        recyclerView.adapter = weatherAdapter
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //binding.toolbar.titl(args.cityName)
 
         setupRecyclerView()
 
         cityName = args.cityName
+        //weatherList = args.myWeather
+
+        //Navigation.findNavController(view).currentDestination?.label = cityName
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = cityName
 
         weatherViewModel = ViewModelProvider(
             this,
@@ -59,8 +63,8 @@ class WeatherFragment : Fragment() {
 
         weatherViewModel.getWeather(cityName)
 
-        weatherViewModel.response.observe(viewLifecycleOwner, Observer {
-            weatherAdapter.differ.submitList(it.data?.list)
+//        weatherViewModel.response.observe(viewLifecycleOwner, Observer {
+//            weatherAdapter.differ.submitList(it)
 
 //            binding.apply {
 //                tvCityName.text = cityName
@@ -73,11 +77,11 @@ class WeatherFragment : Fragment() {
 //                tvForecast2.text = "${forecast[1].temperature}/ ${forecast[1].wind}"
 //                tvForecast3.text = "${forecast[2].temperature}/ ${forecast[2].wind}"
 //            }
-        })
+  //      })
 
-//        weatherViewModel.weatherData.observe(viewLifecycleOwner, Observer {
-//            weatherAdapter.differ.submitList(it.data?.list)
-//        })
+        weatherViewModel.response.observe(viewLifecycleOwner, Observer {
+            weatherAdapter.differ.submitList(it.data)
+        })
     }
 
     private fun setupRecyclerView() = binding.rvWeather.apply {

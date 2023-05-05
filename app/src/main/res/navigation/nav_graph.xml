@@ -21,20 +21,28 @@
         tools:layout="@layout/fragment_weather">
         <action
             android:id="@+id/hourlyWeatherFragment_to_weatherInfoFragment"
-            app:destination="@id/weatherFragmentItems" />
+            app:destination="@id/weatherInfoFragment" />
 <!--        <argument-->
 <!--            android:name="myWeather"-->
-<!--            app:argType="com.example.lowesweatherapp.model.HourlyWeather[]"-->
+<!--            app:argType="com.express.android.davidweatherapprebuild.data.models.HourlyWeather[]"-->
 <!--            app:nullable="false" />-->
         <argument
             android:name="cityName"
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/weatherFragmentItems"
-        android:name="com.express.android.davidweatherapprebuild.ui.fragments.WeatherFragment"
-        android:label="Weather"
-        tools:layout="@layout/fragment_weather">
+        android:id="@+id/weatherInfoFragment"
+        android:name="com.express.android.davidweatherapprebuild.ui.fragments.WeatherInfoFragment"
+        android:label="Weather Info"
+        tools:layout="@layout/fragment_weather_info">
+        <argument
+            android:name="selectedWeather"
+            app:argType="com.express.android.davidweatherapprebuild.data.models.HourlyWeather"
+            app:nullable="false" />
+        <argument
+            android:name="cityName"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 
 </navigation>

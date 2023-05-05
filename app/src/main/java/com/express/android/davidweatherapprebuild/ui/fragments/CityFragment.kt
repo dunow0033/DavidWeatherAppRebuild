@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.express.android.davidweatherapprebuild.R
 import com.express.android.davidweatherapprebuild.data.models.HourlyWeather
@@ -44,13 +45,30 @@ class CityFragment : Fragment() {
             WeatherViewModelFactory(WeatherRepository(WeatherManager()))
         ).get(WeatherViewModel::class.java)
 
+        binding.
+
         binding.nextButton.setOnClickListener {
             val cityName = binding.etCity.text.toString()
             val bundle = bundleOf("cityName" to cityName)
             //weatherViewModel.getWeather(cityName)
-            findNavController().navigate(R.id.cityFragment_to_WeatherFragment, bundle)
+            //weatherViewModel.weatherData.observe(viewLifecycleOwner) {
+                //navigateToWeatherList(cityName, it.data!!.toTypedArray())
+                //findNavController().navigate(CityFragmentDirections.cityFragmentToWeatherFragment(cityName))
+                findNavController().navigate(R.id.cityFragment_to_WeatherFragment, bundle)
+            //}
         }
     }
+
+//    private fun navigateToWeatherList(
+//        city: String, data: Array<HourlyWeather>
+//    ) {
+//        findNavController().navigate(
+//            CityFragmentDirections.cityFragmentToWeatherFragment(
+//                data,
+//                city
+//            )
+//        )
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
