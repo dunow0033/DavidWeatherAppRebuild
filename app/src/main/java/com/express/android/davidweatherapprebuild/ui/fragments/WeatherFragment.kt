@@ -48,9 +48,11 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //binding.toolbar.titl(args.cityName)
 
+        cityName = args.cityName
+
         setupRecyclerView()
 
-        cityName = args.cityName
+
         //weatherList = args.myWeather
 
         //Navigation.findNavController(view).currentDestination?.label = cityName
@@ -85,7 +87,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun setupRecyclerView() = binding.rvWeather.apply {
-        weatherAdapter = WeatherAdapter()
+        weatherAdapter = WeatherAdapter(cityName)
         adapter = weatherAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }

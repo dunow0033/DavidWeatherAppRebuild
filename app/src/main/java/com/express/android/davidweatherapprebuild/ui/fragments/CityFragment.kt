@@ -45,8 +45,6 @@ class CityFragment : Fragment() {
             WeatherViewModelFactory(WeatherRepository(WeatherManager()))
         ).get(WeatherViewModel::class.java)
 
-        binding.
-
         binding.nextButton.setOnClickListener {
             val cityName = binding.etCity.text.toString()
             val bundle = bundleOf("cityName" to cityName)

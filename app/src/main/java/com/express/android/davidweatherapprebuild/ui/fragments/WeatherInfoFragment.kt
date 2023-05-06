@@ -40,8 +40,8 @@ class WeatherInfoFragment : Fragment() {
         with(binding) {
             tvMainTemp.text = args.selectedWeather.main?.temp.toString()
             tvFeelsLike.text = args.selectedWeather.main?.feelsLike.toString()
-            tvMainWeather.text = args.selectedWeather.weather?.get(0)?.main
-            tvDescription.text = args.selectedWeather.weather?.get(0)?.description
+            tvMainWeather.text = args.selectedWeather.weather[0].main
+            tvDescription.text = args.selectedWeather.weather[0].description
         }
     }
 

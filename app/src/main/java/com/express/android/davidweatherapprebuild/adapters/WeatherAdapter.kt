@@ -11,7 +11,7 @@ import com.express.android.davidweatherapprebuild.data.models.HourlyWeather
 import com.express.android.davidweatherapprebuild.databinding.ItemWeatherBinding
 import com.express.android.davidweatherapprebuild.ui.fragments.WeatherFragmentDirections
 
-class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+class WeatherAdapter(val cityName: String) : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     inner class WeatherViewHolder(val binding: ItemWeatherBinding) :
             RecyclerView.ViewHolder(binding.root)
@@ -51,7 +51,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
         }
 
         holder.binding.rowLayout.setOnClickListener {
-            holder.itemView.findNavController().navigate(WeatherFragmentDirections.hourlyWeatherFragmentToWeatherInfoFragment(day))
+            holder.itemView.findNavController().navigate(WeatherFragmentDirections.hourlyWeatherFragmentToWeatherInfoFragment(day, cityName))
         }
     }
 }

@@ -11,6 +11,8 @@
        android:id="@+id/textFieldSearch"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       app:endIconDrawable="@drawable/ic_clear"
+       app:endIconMode="clear_text"
        android:layout_marginLeft="30dp"
        android:layout_marginRight="30dp"
        android:hint="City"
