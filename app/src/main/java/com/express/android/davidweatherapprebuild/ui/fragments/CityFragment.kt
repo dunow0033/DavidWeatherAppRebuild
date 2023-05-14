@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
@@ -17,6 +19,8 @@ import com.express.android.davidweatherapprebuild.data.remote.WeatherManager
 import com.express.android.davidweatherapprebuild.databinding.FragmentCityBinding
 import com.express.android.davidweatherapprebuild.repository.WeatherRepository
 import com.express.android.davidweatherapprebuild.utils.Constants.Companion.API_KEY
+import com.express.android.davidweatherapprebuild.utils.Resource
+import com.express.android.davidweatherapprebuild.utils.State
 import com.express.android.davidweatherapprebuild.viewModels.WeatherViewModel
 import com.express.android.davidweatherapprebuild.viewModels.WeatherViewModelFactory
 
@@ -45,6 +49,18 @@ class CityFragment : Fragment() {
             WeatherViewModelFactory(WeatherRepository(WeatherManager()))
         ).get(WeatherViewModel::class.java)
 
+        //with(weatherViewModel) {
+            //state.observe(viewLifecycleOwner) {
+//                if(binding.textFieldSearch. == 1) {
+//                    binding.textFieldSearch.isErrorEnabled = true
+//                    binding.textFieldSearch.error = "Error occurred...please try again"
+//                    binding.nextButton.isEnabled = false
+//                }
+            //}
+        //}
+
+        //binding.textFieldSearch.isErrorEnabled
+
         binding.nextButton.setOnClickListener {
             val cityName = binding.etCity.text.toString()
             val bundle = bundleOf("cityName" to cityName)
@@ -55,6 +71,9 @@ class CityFragment : Fragment() {
                 findNavController().navigate(R.id.cityFragment_to_WeatherFragment, bundle)
             //}
         }
+
+//        binding.progressBar.isVisible = it is State.Loading
+//        binding.nextButton.isEnabled = it !is State.Loading
     }
 
 //    private fun navigateToWeatherList(

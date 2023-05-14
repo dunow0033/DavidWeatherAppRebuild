@@ -1,13 +1,11 @@
 package com.express.android.davidweatherapprebuild.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.express.android.davidweatherapprebuild.data.models.HourlyWeather
 import com.express.android.davidweatherapprebuild.data.models.WeatherResponse
 import com.express.android.davidweatherapprebuild.repository.WeatherRepository
 import com.express.android.davidweatherapprebuild.utils.Resource
+import com.express.android.davidweatherapprebuild.utils.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
